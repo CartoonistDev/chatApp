@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home</title>
+</head>
+<body>
+
+
+<!--    //th:each="msg : ${greetings}" is Iterating over each element in greetings and sticks it to the value mgs.-->
+<!--    //th:text="${msg}" sets each output to the value msg-->
+<!--    //The th:each="msg : ${greetings}" and th:text="${msg}" are used-->
+<!--    //to Display the contents of the list greetings in the h1 element.-->
+    <h1 th:each="msg : ${greetings}"
+        th:text="${msg}"
+        th:unless="${msg.contains('Hey')}">Hello Java!</h1>
+
+<!--    //When a user types in the text input field, that data will be added to the text field of-->
+<!--    //newMessage object th:field="*{text}" which is provided to the template by the controller-->
+
+<!--    //When a user clicks the submit button, it sends the newMessage object in the body of a post request-->
+<!--    //to the URL in the form's action i.e th:action="@{/home}", and the controller processes the request-->
+<!--    //with the appropriate method-->
+
+
+
+<!--    //the action attribute th:action helps us specify the URL we're sending the-->
+<!--    //form data to when we submit it. it has a special URL selection syntax @-->
+
+
+<!--    //the th:object="${newMessage}" is used to bind the form to the MessageForm class-->
+
+    <form th:object="${newMessage}" th:action="@{/home}" action="#" method="post">
+<!--        //the * is used to reference the object in the form-->
+<!--        //Instead of {newMessage.text} in the th:field, an ordinary {text} will function same way-->
+<!--        //because it is in the input field that is enclosed the form-->
+        <label for="newMessageText">Submit a Message</label>
+
+        <input type="text" id="newMessageText" name="newMessageText" th:field="*{text}">
+        <input type="submit">
+    </form>
+
+</body>
+</html>
